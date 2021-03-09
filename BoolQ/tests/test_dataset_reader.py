@@ -12,7 +12,7 @@ def test_boolq_dataset_reader_default_setting():
     print(data_path)
     instances = list(reader.read(data_path))
 
-    assert len(instances) == 2
+    assert len(instances) == 30
 
     fields = instances[0].fields
     assert [t.text for t in fields["tokens"].tokens][:5] == [
@@ -45,7 +45,7 @@ def test_boolq_dataset_reader_roberta_setting():
     data_path = str(TEST_FIXTURES_PATH / "toy_data.jsonl")
     instances = list(reader.read(data_path))
 
-    assert len(instances) == 2
+    assert len(instances) == 30
 
     fields = instances[0].fields
     assert [t.text for t in fields["tokens"].tokens][:5] == [
