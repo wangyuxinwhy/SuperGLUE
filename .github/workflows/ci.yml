@@ -50,4 +50,5 @@ jobs:
     - name: PyTest
       if: always()
       run: |
+        cd BoolQ
         pytest -v .
