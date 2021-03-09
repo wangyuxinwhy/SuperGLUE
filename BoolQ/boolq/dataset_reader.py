@@ -14,7 +14,6 @@ class BoolQDatasetReader(DatasetReader):
         self,
         tokenizer: Tokenizer = None,
         token_indexers: Dict[str, TokenIndexer] = None,
-        max_length: int = 115,
         **kwargs
     ):
         super().__init__(
@@ -24,7 +23,6 @@ class BoolQDatasetReader(DatasetReader):
         )
         self.tokenizer = tokenizer or WhitespaceTokenizer()
         self.token_indexers = token_indexers or {"tokens": SingleIdTokenIndexer()}
-        self.max_length = max_length
 
     def _read(self, file_path) -> Iterable[Instance]:
         with open(file_path) as f:
