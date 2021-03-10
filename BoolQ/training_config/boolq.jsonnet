@@ -1,5 +1,5 @@
-local transformer_model = "roberta-base";
-local transformer_dim = 768;
+local transformer_model = "roberta-large";
+local transformer_dim = 1024;
 
 {
   "dataset_reader":{
@@ -7,13 +7,13 @@ local transformer_dim = 768;
     "token_indexers": {
       "tokens": {
         "type": "pretrained_transformer",
-        "model_name": transformer_model
+        "model_name": transformer_model,
+        "max_length": 512
       }
     },
     "tokenizer": {
       "type": "pretrained_transformer",
       "model_name": transformer_model,
-      "max_length": 512,
     }
   },
   "train_data_path": "data/train.jsonl",
@@ -25,7 +25,10 @@ local transformer_dim = 768;
       "token_embedders": {
         "tokens": {
           "type": "pretrained_transformer",
-          "model_name": transformer_model
+          "model_name": transformer_model,
+          "transformer_kwargs": {
+            "mirror": "tuna"
+          }
         }
       }
     },
@@ -41,7 +44,7 @@ local transformer_dim = 768;
     "batch_sampler": {
       "type": "bucket",
       "sorting_keys": ["tokens"],
-      "batch_size" : 32
+      "batch_size" : 2
     }
   },
   "trainer": {
@@ -55,8 +58,10 @@ local transformer_dim = 768;
     },
     "optimizer": {
       "type": "huggingface_adamw",
-      "lr": 2e-5,
+      "lr": 1e-5,
       "weight_decay": 0.1,
-    }
-  }
+    },
+    "cuda_device": 0,
+    "num_gradient_accumulation_steps": 16,
+  },
 }
