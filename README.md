@@ -23,17 +23,9 @@ allennlp train -s exp/boolq training_config/boolq.jsonnet
 
 - Model: roberta-large
 - GPU:
-
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 440.64.00    Driver Version: 440.64.00    CUDA Version: 10.2     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|===============================+======================+======================|
-|   0  Tesla V100-SXM2...  On   | 00000000:00:09.0 Off |                    0 |
-| N/A   32C    P0    53W / 300W |      0MiB / 16160MiB |      0%      Default |
-+-------------------------------+----------------------+----------------------+
-
+    - Tesla V100 16GB
+    - Driver Version: 440.64.00
+    - CUDA Version: 10.2
 - Metric:
 ```json
 {
